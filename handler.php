@@ -1,22 +1,20 @@
 <?php
+//include 'BaseController.php';
 include 'Controllers/MainController.php';
-
 $controller = new MainController();
-var_dump($_POST);
-var_dump($_GET);
-die();
+
 switch ($_GET['action']) {
     case 'insert':
         $controller->insert();
     break;
     case 'delete':
         $controller->now_page = $_GET['now_page'];
-
         $controller->delete($_GET['id']);
         
     break;
     case 'update':
-        $controller->update();
+        $controller->now_page = $_GET['now_page'];
+        $controller->update($_GET['id']);
     break;
 } 
 

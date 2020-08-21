@@ -37,7 +37,7 @@ div.container{
     background-color: rgb(211, 211, 211);
     border: 6px solid #949599;
     display: inline-block;
-    width: 100%;
+    width: 90%;
     margin: 5 1.5%;
     
 }
@@ -86,7 +86,8 @@ p.string{
 div {
     display: block;
     float:left;
-    width: 100%;
+    width: 90%;
+    padding: 3%;
 }
 .pagination {
     display: inline-block;
@@ -109,7 +110,24 @@ div {
 .pagination a:hover:not(.active) {
     background-color: #ddd;
 }
+.form-popup {
+    display: none;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    left: 30px;
+    background-color: lightblue;
+    width: 50%;
+}
 
+.form-container input[type=text], .form-container input[type=password] {
+    width: 50%;
+    
+}
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+    background-color: #ddd;
+    
+}
 footer{
     width:100%;
     height: 200px;

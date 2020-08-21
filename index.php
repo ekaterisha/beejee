@@ -1,10 +1,12 @@
 <?php
 
-include 'Controllers/MainController.php';
-include 'Models/MainModel.php';
+include_once 'Controllers/MainController.php';
+include_once 'Models/MainModel.php';
 
-//var_dump($_GET);
-$controller = new MainController();
-$controller->run();
+
+/*if (!isset($controller)){ */
+    $controller = new MainController();
+    $controller->run();
+//}
 
 ?>
