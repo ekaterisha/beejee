@@ -1,4 +1,4 @@
-<?php 
+<?php namespace beejee\rin\Models;
 class MainModel {
     public $now_page;
     public $Data;

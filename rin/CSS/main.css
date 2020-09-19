@@ -1,21 +1,73 @@
 div.header{
     width:100%;
-    float:left;
     background-color: white;
 }
 
 body{
-background-color: rgb(33, 126, 163);
+background-color: rgb(32, 126, 162);
     display: block;
-    margin: 8px;
-    margin-top: 8px;
-    margin-right: 8px;
-    margin-bottom: 8px;
-    margin-left: 8px;
+    margin: 0 0;
+    width: 100%;
 }
-a,td,h4,p 
-	{color:white;}
+a,h1,h2,h4,p 
+{
+    color:white;
+}
+h1 {
+    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold) var(--unnamed-font-size-55)/var(--unnamed-line-spacing-24) var(--unnamed-font-family-arial);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    text-align: left;
+    font: normal normal bold 55px/24px Arial;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    opacity: 1;
+}
+h2 {
+    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold) 30px/var(--unnamed-line-spacing-24) var(--unnamed-font-family-arial);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    text-align: left;
+    font: normal normal bold 30px/24px Arial;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    opacity: 1;
+}
+h4 {
+    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) var(--unnamed-font-size-24)/32px var(--unnamed-font-family-arial);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    text-align: left;
+    font: normal normal normal 24px/32px Arial;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    opacity: 1;
+    display: inline;
+}
 
+.container-narrow {
+    margin: 70px auto;
+    max-width: 1200px;
+    width: 100%;
+
+    }
+div {
+    display: block;
+    position: relative;
+    padding: 5px;
+}
+.left {
+    display: inline;
+    float: inherit;
+}
+.right {
+    
+    display: inline;
+    float: right;
+}
+.string {
+    float: none;
+
+}
 div.button{
     width:25%;
     background-color: rgba(163, 163, 163, 0.794);
@@ -24,14 +76,17 @@ div.button{
     display: inline-block;
     margin: 0;
 }
-.btn-danger {
-    background: red;
-    float: left;
-  }
 .btn-success {
-    background: green;
-    float: right;
+    background: rgb(32, 126, 162);
+    color:white;
+    border-radius: 0px;
+    float: left;
+    outline: none;
+    border: 0;
   }
+.button:hover {
+    background: rgb(76, 105, 232); 
+}
 
 div.container{
     background-color: rgb(211, 211, 211);
@@ -75,20 +130,15 @@ p.string{
     font-size: 24px;
     background-color: rgb(211, 183, 22);
     display: inline-block;
-    float:inherit;
+    float: inherit;
 }
 .sectionCkbx {
     font-size: 20px;
     background-color: rgb(146, 125, 7);
     display: inline-block;
-    float:right;
+    float: right;
 }
-div {
-    display: block;
-    float:left;
-    width: 90%;
-    padding: 3%;
-}
+
 .pagination {
     display: inline-block;
 }

@@ -2,20 +2,34 @@
 $page = '<html>';
 $page .= '<head><meta charset="utf-8">
 <title> ООО Рина </title>
-<link rel="stylesheet" href="CSS/main.css">
+<link rel="stylesheet" href="rin/CSS/main.css">
 </head>
-<body>   
-<h1>Task book</h1>
+<body>
+<div class="container-narrow">
+<div class="mainhead">
+<div class="string">
+  <span class="left"> 
+  <h4>Задачник</h4>
+  </span>
+  <span class="right">
+    <button class="button btn-success"> <h4>Войти </h4></button>
+    <img src="rin/Media/user.png" ><br>
+  </span>
+</div>
+<div>
+  <h1>ЗОЛОТАЯ РЫБКА</h1>
 
-<p>Добавить задачу может каждый, редактировать её - лишь администратор</p>
-<form>
-  <button class="button btn-danger">Сортировка</button>
-  <button class="button btn-success">Вход</button><Br>
-</form>';
-foreach ($model->Data as $key=>$value) {
+  <h4>Идеальный инструмент для тех, кому необходимо запомнить 3 задачи за раз </h4>
+  </div>
+</div>
+<div class="tasks">
+<h2>АКТУАЛЬНЫЕ ЗАДАЧИ</h2>
+<p>Сортировка </p>
+';
+foreach ($this->model->Data as $key=>$value) {
   $checked = $value['status'] == 'done' ? 'checked' : '';
     $page .= '<section> <div>
-              <span class="span sectionText"> <p>Task</p></span> <span class="span sectionCkbx">Выполнена <input type="checkbox" name="status" '.$checked.'></span>
+              <span class="span sectionText"> <p>Task</p></span> <span class="span sectionCkbx">Выполнена <input type="checkbox" name="status'.$value['id'].'" '.$checked.' onclick="taskStatus('.$value['id'].')"></span>
                         </div>';
     $page .= '<div><span class="container">'.$value['fio'].'</span><br>';
     $page .= '<span class="container">'.$value['email'].'</span><br>';
@@ -24,7 +38,7 @@ foreach ($model->Data as $key=>$value) {
     <div>
     <button class="open-button" onclick="openForm('.$value['id'].')">Редачить</button>
     <div class="form-popup" id="myForm'.$value['id'].'">
-    <form action="./handler.php?action=update&id='.$value['id'].'&now_page='.$this->now_page.'" class="form-container" method="post">
+    <form action="index.php?action=update&id='.$value['id'].'&now_page='.$this->now_page.'" class="form-container" method="post">
       <h1>Отредактировать задачу</h1>
       <label for="fio"><b>Имя</b></label><br>
       <input type="text" placeholder="Ваше имя" name="fio" value="'.$value['fio'].'" required><br>
@@ -36,7 +50,7 @@ foreach ($model->Data as $key=>$value) {
       <button type="button" class="btn cancel" onclick="closeForm('.$value['id'].')">Закрыть</button>
     </form>
   </div>
-    <form action="../handler.php?action=delete&id='.$value['id'].'&now_page='.$this->now_page.'" method="post">
+    <form action="index.php?action=delete&id='.$value['id'].'&now_page='.$this->now_page.'" method="post">
       <input type="submit" value="Удалить">
     </form></div>
    </section>';
@@ -46,19 +60,21 @@ foreach ($model->Data as $key=>$value) {
 $page .= '<p>Навигация</p>
 <section class="pagination">';
 if ($this->now_page>1){
-  $page .='<a class="pagination a" href="../index.php?page='.($this->now_page-1).'">❮</a>';
+  $page .='<a class="pagination a" href="index.php?page='.($this->now_page-1).'">❮</a>';
 }
 
 for ($i = 1; $i <= $this->last_page; $i++) {
-  $page .= '<a class="pagination a" href="../index.php?page='.$i.'" >'.$i.'</a>';
+  $page .= '<a class="pagination a" href="index.php?page='.$i.'" >'.$i.'</a>';
 }
 if ($this->now_page<$this->last_page){
-  $page .='<a class="pagination a" href="../index.php?page='.($this->now_page+1).'">❯</a>';
+  $page .='<a class="pagination a" href="index.php?page='.($this->now_page+1).'">❯</a>';
 }
 
 $page .= '
 </section>
-<div><form action="../handler.php?action=insert" method="post">
+</div>
+<div class="addtaskform">
+<form id="task_form" action="index.php?action=create" method="post">
 <p>Добавить задачу в список<Br>
 <p><b>Ваше имя:</b><br>
 <input type="text" name="fio" placeholder="Александров Александр Александрович" size="40" required></p>
@@ -78,10 +94,16 @@ $page .= '
 
 
 </form></div>';
-$page .= '</body>
-<footer> <div class="contacts"> ООО Рина </div>
-<div class="contacts"> E-mail: ekaterisha48@gmail.com </div> </footer>
-<script src="../func.js"></script>
+$page .= '
+<div class="contacts"> 
+  <p> OОО Рина </p>
+  <p> E-mail: ekaterisha48@gmail.com </p>
+</div> 
+</body>
+
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="rin/JS/func.js"></script>
 </html>';
 echo $page;
 
