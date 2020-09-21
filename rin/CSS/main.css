@@ -1,21 +1,9 @@
-div.header{
-    width:100%;
-    background-color: white;
-}
-
-body{
-background-color: rgb(32, 126, 162);
-    display: block;
-    margin: 0 0;
-    width: 100%;
-}
-a,h1,h2,h4,p 
+/* Текст */
+a,h1,h2,h4
 {
     color:white;
 }
 h1 {
-    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold) var(--unnamed-font-size-55)/var(--unnamed-line-spacing-24) var(--unnamed-font-family-arial);
-    letter-spacing: var(--unnamed-character-spacing-0);
     text-align: left;
     font: normal normal bold 55px/24px Arial;
     letter-spacing: 0px;
@@ -24,8 +12,6 @@ h1 {
     opacity: 1;
 }
 h2 {
-    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold) 30px/var(--unnamed-line-spacing-24) var(--unnamed-font-family-arial);
-    letter-spacing: var(--unnamed-character-spacing-0);
     text-align: left;
     font: normal normal bold 30px/24px Arial;
     letter-spacing: 0px;
@@ -34,8 +20,6 @@ h2 {
     opacity: 1;
 }
 h4 {
-    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) var(--unnamed-font-size-24)/32px var(--unnamed-font-family-arial);
-    letter-spacing: var(--unnamed-character-spacing-0);
     text-align: left;
     font: normal normal normal 24px/32px Arial;
     letter-spacing: 0px;
@@ -43,156 +27,301 @@ h4 {
     opacity: 1;
     display: inline;
 }
+.text{
+    margin: 4 1.5%;
+    height: 120px;
+    text-align: left;
+    font: normal normal normal 18px/24px Arial;
+    letter-spacing: 0px;
+    color: #050505;
+    opacity: 1;
+    overflow: auto;
+}
+.pagination a {
+    color: #FFFFFF;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    letter-spacing: var(--unnamed-character-spacing-0);
+    text-align: left;
+    font: normal normal normal 24px/32px Arial;
+    letter-spacing: 0px;
+    opacity: 1;
+}
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+    border-radius: 5px;
+    color: rgb(32, 126, 162);
+}
+p.contacts {
+    text-align: right;
+    font: normal normal normal 18px/20px Arial;
+    letter-spacing: 0px;
+    color: #f8f8f8;
+    opacity: 1;
+}
+p.contacts > a {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight:bold;
+}
+::-webkit-input-placeholder {
+    color: #707070;
+    text-align: left;
+    font: normal normal normal 18px/24px Arial;
+    letter-spacing: 0px;
+}
+::-moz-placeholder  {
+    color: #707070;
+    text-align: left;
+    font: normal normal normal 18px/24px Arial;
+    letter-spacing: 0px;
+}
+:-moz-placeholder   {
+    color: #707070;
+    text-align: left;
+    font: normal normal normal 18px/24px Arial;
+    letter-spacing: 0px;
+}
+:-ms-input-placeholder  {
+    color: #707070;
+    text-align: left;
+    font: normal normal normal 18px/24px Arial;
+    letter-spacing: 0px;
+}
+input[type~="text"], input[type~="password"], input[type~="email"], textarea {
+    color: #050505;
+    text-align: left;
+    font: normal normal normal 18px/24px Arial;
+    letter-spacing: 0px;
+}
 
+/* Блоки */
+body{
+background-color: rgb(32, 126, 162);
+    display: block;
+    margin: 0 0;
+    width: 100%;
+}
 .container-narrow {
     margin: 70px auto;
-    max-width: 1200px;
+    max-width: 1250px;
     width: 100%;
-
-    }
+}
 div {
     display: block;
     position: relative;
     padding: 5px;
+}
+section {
+    display: inline-block;
+    margin: 10 5;
+    padding: 13;
+    width: 370px;
+    height: 270px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border-radius: 10px;
+    opacity: 1;
+}
+.sectionText {
+    font-size: 24px;
+    display: inline-block;
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-070707);
+    text-align: left;
+    font: normal normal bold 24px/28px Arial;
+    letter-spacing: 0px;
+    color: #070707;
+    opacity: 1;
+}
+.sectionCkbx {
+    font-size: 20px;
+    float: right;
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-070707);
+    text-align: left;
+    font: normal normal bold 24px/28px Arial;
+    letter-spacing: 0px;
+    color: #070707;
+    opacity: 1;
+}
+span.container{
+    display: inline-block;
+    width: 100%;
+    margin: 2 4;
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-707070);
+    text-align: left;
+    font: normal normal normal 18px/24px Arial;
+    letter-spacing: 0px;
+    color: #707070;
+    opacity: 1;
+}
+#task_form {
+    width: 814px;
+}
+.addtaskform {
+    position: static;
+}
+.addtaskform-btn {
+    position: static;
+    width: 320px;
+    height: 60px;
+    float: right;
+}
+.string {
+    float: none;
+}
+.form-popup {
+    display: none;
+    position: fixed;
+    border-radius: 10px;
+    border: 4px solid  white;
+    background-color: rgb(32, 126, 162);
+    width: 814px;
+    height: 450px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    z-index: 1;
+}
+.pagination {
+    display: inline-block;
 }
 .left {
     display: inline;
     float: inherit;
 }
 .right {
-    
     display: inline;
     float: right;
 }
-.string {
-    float: none;
-
-}
-div.button{
-    width:25%;
-    background-color: rgba(163, 163, 163, 0.794);
-    font-size: 16px;
-    border-radius: 5px;
+.left-add {
     display: inline-block;
-    margin: 0;
+    float: inherit;
+    width: 390px;
 }
-.btn-success {
+.right-add {
+    display: inline-block;
+    float: right;
+}
+.input {
+    border: 1px solid var(--unnamed-color-707070);
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #707070;
+    border-radius: 5px;
+    opacity: 1;
+    width: 399px;
+    height: 50px;
+}
+.input-desc {
+    border: 1px solid var(--unnamed-color-707070);
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #707070;
+    border-radius: 5px;
+    opacity: 1;
+    width: 804px;
+    height: 160px;
+}
+.input-ckbx {
+    border: 1px solid var(--unnamed-color-707070);
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #707070;
+    border-radius: 5px;
+    opacity: 1;
+    width: 20px;
+    height: 20px;
+}
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+    background-color: #ddd;
+}
+
+/* Кнопки */
+.btn-login {
+    background: rgb(32, 126, 162);
+    color: white;
+    border-radius: 0px;
+    outline: none;
+    border: 0;
+    color: #FFFFFF;
+    float: left;
+    padding: 8px 16px;
+    transition: background-color .3s;
+    text-align: left;
+    font: normal normal normal 24px/32px Arial;
+    letter-spacing: 0px;
+    opacity: 1;
+}
+.open-button {
+    background: #4E4E4E;
+    outline: none;
+    border: 0;
+    float: right;
+    padding: 0;
+    width: 156px;
+    height: 40px;
+    text-align: center;
+    font: normal normal normal 18px/24px Arial;
+    letter-spacing: 0px;
+    color: #ffffff;
+    opacity: 1;
+    border: 1px solid #707070;
+    border-radius: 5px;
+    font: normal normal normal 18px/24px Arial;
+}
+.delete-button {
+    background: #ffffff;
+    outline: none;
+    border: 0;
+    float: left;
+    padding: 0;
+    width: 156px;
+    height: 40px;
+    text-align: center;
+    font: normal normal normal 18px/24px Arial;
+    letter-spacing: 0px;
+    color: #000000;
+    opacity: 1;
+    border: 1px solid #707070;
+    border-radius: 5px;
+    font: normal normal normal 18px/24px Arial;
+}
+.add-button {
+    outline: none;
+    border: 0;
+    float: right;
+    padding: 0;
+    width: 156px;
+    height: 50px;
+    text-align: center;
+    font: normal normal normal 18px/24px Arial;
+    letter-spacing: 0px;
+    color: #000000;
+    opacity: 1;
+    border: 1px solid #707070;
+    border-radius: 5px;
+}
+.reset-button {
     background: rgb(32, 126, 162);
     color:white;
     border-radius: 0px;
     float: left;
+    width: 156px;
+    height: 50px;
     outline: none;
-    border: 0;
-  }
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    text-align: center;
+    font: normal normal normal 18px/24px Arial;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    opacity: 1;
+}
 .button:hover {
-    background: rgb(76, 105, 232); 
-}
-
-div.container{
-    background-color: rgb(211, 211, 211);
-    border: 6px solid #949599;
-    display: inline-block;
-    width: 90%;
-    margin: 5 1.5%;
-    
-}
-span.container{
-    background-color: rgb(211, 211, 211);
-    display: inline-block;
-    width: 100%;
-    margin: 4 1.5%;
-    
-}
-section {
-    display: inline-block;
-    margin: 5 1.5%;
-    padding: 5;
-    width: 27%;
-    border: 6px solid #949599;
-}
-.text{
-    background-color: rgb(211, 211, 211);
-    border: 2px solid #ca12ca;
-    width: 100px; 
-    margin: 4 1.5%;
-}
-p {
-    font-size: 24px;
-  }
-p.string{
-    background-color: rgb(150, 41, 223);
-    border: 6px solid #ca12ca;
-    width: 100px; 
-    font-size: 14px;
-}
-
-.sectionText {
-    font-size: 24px;
-    background-color: rgb(211, 183, 22);
-    display: inline-block;
-    float: inherit;
-}
-.sectionCkbx {
-    font-size: 20px;
-    background-color: rgb(146, 125, 7);
-    display: inline-block;
-    float: right;
-}
-
-.pagination {
-    display: inline-block;
-}
-  
-.pagination a {
-    color: black;
-    float: left;
-    padding: 8px 16px;
-    text-decoration: none;
-    transition: background-color .3s;
-    border: 1px solid #ddd;
-}
-  
-.pagination a.active {
-    background-color: #4CAF50;
-    color: white;
-    border: 1px solid #4CAF50;
-}
-.pagination a:hover:not(.active) {
     background-color: #ddd;
-}
-.form-popup {
-    display: none;
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    left: 30px;
-    background-color: lightblue;
-    width: 50%;
-}
-
-.form-container input[type=text], .form-container input[type=password] {
-    width: 50%;
-    
-}
-.form-container input[type=text]:focus, .form-container input[type=password]:focus {
-    background-color: #ddd;
-    
-}
-footer{
-    width:100%;
-    height: 200px;
-    float:left;
-    background-color: rgb(24, 6, 83);
-    border-bottom: 1px dotted black;
-}
-div.contacts {
-    margin-top: 20px;
-    margin-left: 65px;
-    background-color: pink;
-}
-div.contacts > a {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    font-weight:bold;
-    background-color: pink;
+    border-radius: 5px;
+    color: rgb(32, 126, 162);
 }
