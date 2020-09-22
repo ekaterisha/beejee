@@ -28,7 +28,7 @@ $page .= '<head><meta charset="utf-8">
   <h4>Сортировка </h4>
   <div/>
 ';
-foreach ($this->model->Data as $key=>$value) {
+foreach ($data_provider as $key=>$value) {
   $checked = $value['status'] == 'done' ? 'checked' : '';
     $page .= '<section> 
               <div> 

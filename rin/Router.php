@@ -1,6 +1,6 @@
 <?php namespace beejee\rin;
 
- class Base {
+ class Router {
     private static $mysqli;
     private static $controllers;
     private static $instance;  // экземпляр объекта
@@ -14,7 +14,7 @@
         }
         return self::$instance;
     }
-    public static function router() { 
+    public static function run() { 
         $r = isset($_GET["r"]) ? $_GET["r"] : 'Main'; 
         if (!isset(self::$controllers)) {
             $name_controller = __NAMESPACE__.'\Controllers\\'.$r.'Controller';
@@ -44,12 +44,6 @@
             break;
 
         }
-    }
-    public static function mysqli(){
-        if (!isset(self::$mysqli)){
-            self::$mysqli = new \mysqli("192.168.1.232", "rina", "1234", "tests");
-        }
-        return self::$mysqli;
     }
  }
 

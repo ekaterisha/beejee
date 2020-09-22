@@ -30,9 +30,9 @@ class MainController {
         $this->now_page = $this->now_page > $this->last_page ? $this->last_page : $this->now_page;
 
         $this->model = new \beejee\rin\Models\MainModel();
-        $this->model->now_page = $this->now_page;
-        //$data_provider =$this->model->getData();
-        $this->model->getData();
+        $data_provider = $this->model->getData();
+        $data_provider = array_chunk($data_provider, 3);
+        $data_provider = $data_provider[$this->now_page-1];
 
         return include 'rin/Views/MainView.php';
         

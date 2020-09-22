@@ -1,4 +1,5 @@
 <?php namespace beejee;
+use beejee\rin\Router;
 ini_set('display_errors', 1);
 
 class Loader
@@ -16,6 +17,6 @@ class Loader
 
 spl_autoload_register(__NAMESPACE__.'\Loader::test_load');
 
-rin\Base::router();
+Router::run();
 
 ?>
