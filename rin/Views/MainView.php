@@ -12,8 +12,25 @@ $page .= '<head><meta charset="utf-8">
   <h4>Задачник</h4>
   </span>
   <span class="right">
-    <button class="button btn-login"> <h4>Войти </h4></button>
+    <button class="button btn-login" onclick="openAuth()"> <h4>Войти </h4></button>
     <img src="rin/Media/user.png" ><br>
+    <div class="auth-popup" id="authForm">
+      <form action="index.php?r=Auth" class="form-container" method="post">
+        <div class="addtaskform">  
+          <h2>ВХОД ДЛЯ АДМИНИСТРАТОРА</h2>
+        </div>
+        <div class="addtaskform">
+          <label for="login"><h4>Логин</h4></label><br>
+          <input class="input" type="text" placeholder="Введите логин" name="login" required><br>
+          <label for="password"><h4>Пароль</h4></label><br>
+          <input class="input" type="password" placeholder="Введите пароль" name="password" required><br>
+      </div>
+        <div class="authform-btn">
+          <button type="submit" class="add-button">Войти</button>
+          <button type="button" class="reset-button" onclick="closeAuth()">Закрыть</button>
+        </div>
+      </form>
+    </div>
   </span>
 </div>
 <div>
@@ -42,32 +59,32 @@ foreach ($data_provider as $key=>$value) {
     <div>
     <button class="open-button" onclick="openForm('.$value['id'].')">Редактировать</button>
     <div class="form-popup" id="myForm'.$value['id'].'">
-    <form action="index.php?action=update&id='.$value['id'].'&now_page='.$this->now_page.'" class="form-container" method="post">
-      <div class="addtaskform">  
-        <h2>РЕДАКТИРОВАНИЕ ЗАДАЧИ</h2>
-      </div>
-      <div class="addtaskform">
-        <span class="left-add"> 
-          <label for="fio"><h4>Имя</h4></label><br>
-          <input class="input" type="text" placeholder="Ваше имя" name="fio" value="'.$value['fio'].'" required><br>
+      <form action="index.php?action=update&id='.$value['id'].'&now_page='.$this->now_page.'" class="form-container" method="post">
+        <div class="addtaskform">  
+          <h2>РЕДАКТИРОВАНИЕ ЗАДАЧИ</h2>
+        </div>
+        <div class="addtaskform">
+          <span class="left-add"> 
+            <label for="fio"><h4>Имя</h4></label><br>
+            <input class="input" type="text" placeholder="Ваше имя" name="fio" value="'.$value['fio'].'" required><br>
+          </span>
+          <span class="right-add">
+            <label for="email"><h4>Е-мейл</h4></label><br>
+            <input class="input" type="text" placeholder="Ваш е-мейл" name="email" value="'.$value['email'].'" required><br>
+          </span>
+        </div>
+        <div class="addtaskform">
+        <span class="left-add">
+          <label for="task_text"><h4>Описание задачи</h4></label><br>
+          <textarea class="input-desc" placeholder="Описание задачи" rows="5" cols="42" name="task_text" required>'.$value['task_text'].'</textarea><br>
         </span>
-        <span class="right-add">
-          <label for="email"><h4>Е-мейл</h4></label><br>
-          <input class="input" type="text" placeholder="Ваш е-мейл" name="email" value="'.$value['email'].'" required><br>
-        </span>
-      </div>
-      <div class="addtaskform">
-      <span class="left-add">
-        <label for="task_text"><h4>Описание задачи</h4></label><br>
-        <textarea class="input-desc" placeholder="Описание задачи" rows="5" cols="42" name="task_text" required>'.$value['task_text'].'</textarea><br>
-      </span>
-      </div>
-      <div class="addtaskform-btn">
-      <button type="submit" class="add-button">Принять</button>
-      <button type="button" class="reset-button" onclick="closeForm('.$value['id'].')">Закрыть</button>
-      </div>
-    </form>
-  </div>
+        </div>
+        <div class="addtaskform-btn">
+        <button type="submit" class="add-button">Принять</button>
+        <button type="button" class="reset-button" onclick="closeForm('.$value['id'].')">Закрыть</button>
+        </div>
+      </form>
+    </div>
     <form action="index.php?action=delete&id='.$value['id'].'&now_page='.$this->now_page.'" method="post">
       <input type="submit"  class="delete-button" value="Удалить">
     </form></div>

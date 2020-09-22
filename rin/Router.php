@@ -39,9 +39,6 @@
                 self::$controllers->now_page = $_GET['now_page'];
                 self::$controllers->delete($_GET['id']);
             break;
-            case 'check':
-                self::$controllers->check();
-            break;
 
         }
     }
