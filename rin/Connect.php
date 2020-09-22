@@ -10,7 +10,7 @@ class Connect {
         $mysqli = self::$mysqli;
         if (!$mysqli->connect_errno) {
             $result = $mysqli->query($mysql_statement);
-            if ($result) {
+            if ($result and !is_bool($result)) {
                 $arr = array();
                 while ($row = $result->fetch_assoc()){
                     $arr[] = $row;

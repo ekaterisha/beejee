@@ -12,7 +12,8 @@ class MainController {
     }
 
     private function findLastPage(){
-        $task_cnt = count($_SESSION['mysql']);
+        $task_cnt = $this->model->getCount();
+
         if ($task_cnt % 3 == 0) {
             $this->last_page = $task_cnt/3;
         }
@@ -20,16 +21,23 @@ class MainController {
             $this->last_page = intval(round(($task_cnt+1)/3));
         }
     }
+    private function checkPOST(){
+        $values = [];
+        $attributes = ['status','fio','email','task_text'];
+        foreach($attributes as $attribute){
+            if(isset($_POST[$attribute])){
+                $values[$attribute] = '"'.$_POST[$attribute].'"';
+            }
+        }
+        return $values;
+    }
 
     public function read(){
 
-
         $this->findLastPage();
-        //var_dump($_SESSION);
         $this->now_page = (isset($_GET['page']) && $_GET['page']<>'' && $_GET['page'] > 1)?intval($_GET['page']):1;
         $this->now_page = $this->now_page > $this->last_page ? $this->last_page : $this->now_page;
 
-        $this->model = new \beejee\rin\Models\MainModel();
         $data_provider = $this->model->getData();
         $data_provider = array_chunk($data_provider, 3);
         $data_provider = $data_provider[$this->now_page-1];
@@ -39,29 +47,17 @@ class MainController {
     }
 
     public function create(){
-        //$this->model->setData();
-        $id = $_SESSION['max_id']++;
-        $status = isset($_POST['status']) ? $_POST['status'] : 'undone';
-        $fio = $_POST['fio'];
-        $email = $_POST['email'];
-        $task_text = $_POST['task_text'];
-        $_SESSION['mysql'][] =  array('id'=> $id,
-                                     'status' => $status, 
-                                     'fio' => $fio, 
-                                     'email' => $email, 
-                                     'task_text' => $task_text);
+
+        $values_to_insert = $this->checkPOST();
+        $this->model->setData($values_to_insert);
+
         $this->findLastPage();
         header("Location: index.php?page=".$this->last_page);
     }
 
     public function delete($id_to_delete){
         
-        foreach($_SESSION['mysql'] as $key => $value){
-            if ($value['id'] == $id_to_delete){
-              unset($_SESSION['mysql'][$key]);
-            }
-        } 
-
+        $this->model->deleteData($id_to_delete);
         $this->findLastPage();
         $page_to_redirect = $this->now_page > $this->last_page ? $this->last_page : $this->now_page;
         header("Location: index.php?page=".$page_to_redirect);
@@ -69,25 +65,10 @@ class MainController {
     }
     
     public function update($id_to_update){
-        $_POST['status'] = isset($_POST['status']) ? $_POST['status'] : 'undone';
 
-        $values_to_update = [];
-        $attributes = ['id','status','fio','email','task_text'];
-        foreach($attributes as $attribute){
-            if(isset($_POST[$attribute])){
-                $values_to_update[$attribute] = $_POST[$attribute];
-            }
-        }
+        $values_to_update = $this->checkPOST();
+        $this->model->updateData($id_to_update, $values_to_update);
 
-        foreach($_SESSION['mysql'] as $key => $value){
-            if ($value['id'] == $id_to_update){
-                
-                foreach($values_to_update as $k => $val){
-                   // var_dump($_SESSION['mysql'][$key]);
-                    $_SESSION['mysql'][$key][$k] = $val;
-                }
-            }  
-        }
         $this->findLastPage();
         $page_to_redirect = $this->now_page > $this->last_page ? $this->last_page : $this->now_page;
         header("Location: index.php?page=".$page_to_redirect);
