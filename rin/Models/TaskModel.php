@@ -1,6 +1,6 @@
 <?php namespace beejee\rin\Models;
 use beejee\rin\Connect;
-class MainModel {
+class TaskModel {
     
     public function getCount(){ 
         return Connect::dbmass('select count(*) as cnt from task')[0]['cnt'];

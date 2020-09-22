@@ -8,7 +8,7 @@ class MainController {
     public $model;
 
     public function __construct(){
-        $this->model = new \beejee\rin\Models\MainModel();
+        $this->model = new \beejee\rin\Models\TaskModel();
     }
 
     private function findLastPage(){
