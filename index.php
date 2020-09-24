@@ -1,6 +1,6 @@
 <?php namespace beejee;
 use beejee\rin\Router;
-ini_set('display_errors', 1);
+#ini_set('display_errors', 1);
 
 class Loader
 {
