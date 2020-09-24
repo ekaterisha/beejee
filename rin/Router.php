@@ -1,4 +1,5 @@
 <?php namespace beejee\rin;
+use beejee\rin\Session;
 
  class Router {
     private static $mysqli;
@@ -21,26 +22,10 @@
             self::$controllers = new $name_controller;
         }
 
+        $controller = Session::get_state($name_controller);
         $action = isset($_GET["action"]) ? $_GET["action"] : 'read';
+        $controller->$action();
 
-        switch ($action) {
-
-            case 'create':
-                self::$controllers->create();
-            break;
-            case 'read':
-                self::$controllers->read();
-            break;
-            case 'update':
-                self::$controllers->now_page = $_GET['now_page'];
-                self::$controllers->update($_GET['id']);
-            break;
-            case 'delete':
-                self::$controllers->now_page = $_GET['now_page'];
-                self::$controllers->delete($_GET['id']);
-            break;
-
-        }
     }
  }
 

@@ -9,6 +9,13 @@ class TaskModel {
     public function getData(){ 
         return Connect::dbmass('select * from task');
     }
+    public function getTaskById($id){
+        return Connect::dbmass('select * from task where id ='.$id.';');
+    }
+
+    public function getFields(){
+        return Connect::dbmass('select column_name from information_schema.columns where table_schema = "tasks" and table_name = "task";');
+    }
 
     public function setData($insert_array){
         Connect::dbmass('insert into task ('.implode(',', array_keys($insert_array)).') 

@@ -24,5 +24,8 @@ function taskStatus(id){
     } );
 }
 
+function sortDropdown() {
+    $('#sorting').submit();
+}
 
 
