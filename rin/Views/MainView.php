@@ -26,7 +26,7 @@ $page = '
             $page .= '
               <img src="rin/Media/user.png"><br>
               <div class="auth-popup" id="authForm">
-                <form action="index.php?r=Auth&action=create&callback='.$this->getCallback().'" class="form-container" method="post">
+                <form id="auth" action="index.php?r=Auth&action=create&callback='.$this->getCallback().'" class="form-container" method="post" validated="false">
                   <div class="addtaskform">  
                     <h2>ВХОД ДЛЯ АДМИНИСТРАТОРА</h2>
                   </div>
@@ -35,6 +35,10 @@ $page = '
                     <input class="input" type="text" placeholder="Введите логин" name="login" required><br>
                     <label for="password"><h4>Пароль</h4></label><br>
                     <input class="input" type="password" placeholder="Введите пароль" name="password" required><br>
+                    <div id="notice">
+                      <a></a>
+                      <br>
+                    </div><br>
                   </div>
                   <div class="authform-btn">
                     <button type="submit" class="add-button">Войти</button>

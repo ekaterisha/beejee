@@ -24,8 +24,29 @@ function taskStatus(id){
     } );
 }
 
-function sortDropdown() {
-    $('#sorting').submit();
-}
+$('#auth').submit(function(){
+  if($(this).attr('validated')=='false'){
+      var login = $('input[name="login"]').val();
+      var password = $('input[name="password"]').val();
+
+      $.ajax({
+          type: 'POST',
+          url: 'index.php?r=Auth&action=check',
+          data: 'login='+login+"&password="+password,
+          success: function(answer){
+              if(answer == 'yes'){
+                  $('#auth').attr('validated',"true");
+                  $('#auth').submit();
+              }
+              if(answer == 'no'){
+                $('#notice a').text('Неверный пароль');
+              }
+          }
+   });
+   return false;
+  }
+ return true;
+});
+
 
 

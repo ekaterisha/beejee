@@ -48,15 +48,16 @@ class MainController {
     public function read(){
         $show = Session::is_logged();
         $this->findLastPage();
-        $this->now_page = (isset($_GET['page']) && $_GET['page']<>'' && $_GET['page'] > 1)?intval($_GET['page']):1;
+        $this->now_page = (isset($_GET['page']) && $_GET['page']<>'' && $_GET['page'] > 1) ? intval($_GET['page']) : ((isset($this->now_page)) ? $this->now_page : 1);
+
         $this->now_page = $this->now_page > $this->last_page ? $this->last_page : $this->now_page;
 
         if (isset($_POST['sort'])) {
             $this->sort_field = substr($_POST['sort'], 0, -2);
             $this->sort_value = substr($_POST['sort'], -2);
         }else {
-            $this->sort_field = 'id';
-            $this->sort_value = '+1';
+            $this->sort_field = (isset($this->sort_field)) ? $this->sort_field : 'id';
+            $this->sort_value = (isset($this->sort_value)) ? $this->sort_value : '+1';
         }
         $concat = $this->sort_field.$this->sort_value;
         $options = ['id+1' => 'Дата добавления',
