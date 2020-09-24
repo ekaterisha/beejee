@@ -90,23 +90,27 @@ class MainController {
     }
 
     public function delete(){
-        $id_to_delete = $_GET['id'];
-        $this->model->deleteData($id_to_delete);
+        if (Session::is_logged()){
+            $id_to_delete = $_GET['id'];
+            $this->model->deleteData($id_to_delete);
+        }
         $this->findLastPage();
         $page_to_redirect = $this->now_page > $this->last_page ? $this->last_page : $this->now_page;
         header("Location: index.php?r=Main&action=read&page=".$page_to_redirect);
     }
     
     public function update(){
-        $id_to_update = $_GET['id'];
-        $values_to_update = $this->checkPOST();
-        $before = $this->model->getTaskById($id_to_update);
-        $this->model->updateData($id_to_update, $values_to_update);
-        $after = $this->model->getTaskById($id_to_update);
+        if (Session::is_logged()){
+            $id_to_update = $_GET['id'];
+            $values_to_update = $this->checkPOST();
+            $before = $this->model->getTaskById($id_to_update);
+            $this->model->updateData($id_to_update, $values_to_update);
+            $after = $this->model->getTaskById($id_to_update);
 
-        if ($before[0]['task_text'] = $after[0]['task_text']) {
-            $flag["edited_by_admin"]= "1";
-            $this->model->updateData($id_to_update, $flag);
+            if ($before[0]['task_text'] != $after[0]['task_text']) {
+                $flag["edited_by_admin"]= "1";
+                $this->model->updateData($id_to_update, $flag);
+            }
         }
         $this->findLastPage();
         $page_to_redirect = $this->now_page > $this->last_page ? $this->last_page : $this->now_page;

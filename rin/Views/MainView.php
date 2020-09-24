@@ -68,6 +68,7 @@ $page = '
           </form>
         </div>';
         foreach ($data_provider as $key=>$value) {
+          $value = array_map('htmlspecialchars', $value);
         $checked = $value['status'] == 'done' ? 'checked' : '';
         $page .= '
         <section> 
@@ -96,11 +97,11 @@ $page = '
                 <div class="addtaskform">
                   <span class="left-add">
                     <label for="fio"><h4>Имя</h4></label><br>
-                    <input class="input" type="text" placeholder="Ваше имя" name="fio" value="'.$value['fio'].'" required><br>
+                    <input class="input" type="text" placeholder="Ваше имя" name="fio" value="'.$value['fio'].'" maxlength="23" required><br>
                   </span>
                   <span class="right-add">
                     <label for="email"><h4>Е-мейл</h4></label><br>
-                    <input class="input" type="text" placeholder="Ваш е-мейл" name="email" value="'.$value['email'].'" required><br>
+                    <input class="input" type="text" placeholder="Ваш е-мейл" name="email" value="'.$value['email'].'" maxlength="35" required><br>
                   </span>
                 </div>
                 <div class="addtaskform">
@@ -145,9 +146,9 @@ $page = '
           </div>
           <div class="addtaskform">
             <span class="left-add"><h4>Имя</h4><br>
-            <input type="text" class="input" name="fio" placeholder="Александров Александр Александрович" size="40" required></span>
+            <input type="text" class="input" name="fio" placeholder="Александров Александр Александрович" size="40" maxlength="23" required></span>
             <span class="right-add"><h4>E-mail</h4><Br>
-            <input type="email" class="input" name="email" placeholder="exemple@gmail.com" required>
+            <input type="email" class="input" name="email" placeholder="exemple@gmail.com" maxlength="35" required>
             </span>
           </div>
           <div class="addtaskform">
